@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3.2.1'
 services:
   php-fpm:
     build: ./php/
@@ -7,6 +7,9 @@ services:
     links:
       - mysql-db:mysql-db
       - redis-db:redis-db
+    environment: 
+      NLS_DATE_FORMAT: YYYY-MM-DD HH24:MI:SS
+      NLS_LANG: SIMPLIFIED CHINESE_CHINA.AL32UTF8
     volumes:
       - ../vhosts:/data/www:rw
       - ./php/php.ini:/usr/local/etc/php/php.ini:ro # 当前php配置文件；可以拷贝修改php-dev.ini为想要的配置
