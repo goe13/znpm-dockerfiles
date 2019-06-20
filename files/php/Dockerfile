@@ -61,11 +61,19 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
         && docker-php-ext-install pdo_mysql \
         && docker-php-ext-install mysqli \
         && docker-php-ext-install opcache \
+        && docker-php-ext-install exif \
+        && docker-php-ext-install sockets \
+        && docker-php-ext-install gettext \
         && rm -r /var/lib/apt/lists/*
 
 # Copy extensions had downloaded
-COPY ./pkg/redis.tgz /home/redis.tgz
+COPY ./pkg/swoole-4.3.5.tgz /home/swoole-4.3.5.tgz
+# Install PECL extensions (Swoole)
+RUN pecl install /home/swoole-4.3.5.tgz && echo "extension=swoole.so" > /usr/local/etc/php/conf.d/swoole.ini
 
+
+# Copy extensions had downloaded
+COPY ./pkg/redis.tgz /home/redis.tgz
 # Install PECL extensions (Redis)
 RUN pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 
@@ -77,6 +85,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 
 RUN rm -f /home/redis.tgz
+RUN rm -f /home/swoole-4.3.5.tgz
 
 WORKDIR /data
 
