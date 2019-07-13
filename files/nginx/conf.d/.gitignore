@@ -1,4 +1,5 @@
 *
 !.gitignore
 !default.conf
-!local-test.com
+!local-test.conf
+!local-pma.conf

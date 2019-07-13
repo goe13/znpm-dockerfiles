@@ -17,3 +17,4 @@
 
 /vhosts/*
 !/vhosts/phpinfo.php
+!/vhosts/local-pma.com

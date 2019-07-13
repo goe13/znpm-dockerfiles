@@ -49,7 +49,6 @@ RUN apt-get update && apt-get install -y \
 
 #安装扩展
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-        && docker-php-ext-install -j$(nproc) gd \
         # && docker-php-ext-configure oci8 --with-oci=shared,instantclient,/usr/local/instantclient_12_2 \
         && docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/usr/local/instantclient_12_2,12.2.0.1.0 \
         && echo 'shared,instantclient,/usr/local/instantclient_12_2/' | pecl install oci8 \
