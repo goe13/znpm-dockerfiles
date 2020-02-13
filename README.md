@@ -39,6 +39,7 @@ wget https://pecl.php.net/get/redis-3.1.6.tgz -O php/pkg/redis.tgz
 ### 4.docker-compose 构建项目
 进入 docker-compose.yml 所在目录：
 执行命令：
+创建私有桥接网络:`docker network create app_net`
 ```
 docker-compose up
 ```  
