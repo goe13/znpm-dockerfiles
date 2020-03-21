@@ -1,4 +1,4 @@
-FROM redis:3.2
+FROM redis:5.0.8
 LABEL maintainer="zww"
 
 # set timezome

@@ -5,13 +5,17 @@
 可以一条条命令执行docker命令来构建镜像，容器。这里推荐使用 docker-compose 来管理，执行项目，下面是使用流程。
 
 相关软件版本：
-- PHP 7.3
+- PHP 7.4
 - MySQL 5.7
-- Nginx 1.14
-- Redis 3.2
+- Nginx 1.17
+- Redis 5.0.8
 
 用到的 PHP 拓展()：
-- redis 3.1.4
+- redis 
+- swoole
+- imagick
+- mcrypt
+- oci8
 
 ## 使用
 ### 1.安装 Docker，Docker-compose  
@@ -24,7 +28,7 @@ sudo pip install -U docker-compose
 ### 2.下载 znpm-dockerfiles
 直接 clone：
 ```
-git clone git@github.com:goe/znpm-dockerfiles.git
+git clone git@github.com:goe13/znpm-dockerfiles.git
 ```
 或者下载 zip 压缩包也可以。
 
